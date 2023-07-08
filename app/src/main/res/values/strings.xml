@@ -1,3 +1,13 @@
 <resources>
-    <string name="app_name">Base Project</string>
+    <string name="app_name" translatable="false">Base Project</string>
+    <string name="build_time">v%1$s Build Time: %2$s</string>
+    <string name="home">Home</string>
+    <string name="setting">Setting</string>
+    <string name="choose_language">Choose your preferred language</string>
+    <string name="english_bangla">English / বাংলা</string>
+    <string name="english">English</string>
+    <string name="bangla">Bangla</string>
+    <string name="choose_an_option">Choose an option</string>
+    <string name="cancel">Cancel</string>
+    <string name="save">Save</string>
 </resources>

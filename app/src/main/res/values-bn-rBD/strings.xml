@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Base Project</string>
+    <string name="build_time">v%1$s বিল্ড টাইম: %2$s</string>
+    <string name="home">হোম</string>
+    <string name="setting">সেটিংস</string>
+    <string name="choose_language">আপনার পছন্দের ভাষা নির্বাচন করুন</string>
+    <string name="english_bangla">English / বাংলা</string>
+    <string name="english">ইংরেজি</string>
+    <string name="bangla">বাংলা</string>
+    <string name="choose_an_option">একটি নির্বাচন করুন</string>
+    <string name="cancel">বাতিল করুন</string>
+    <string name="save">সংরক্ষণ করুন</string>
+
+
+</resources>

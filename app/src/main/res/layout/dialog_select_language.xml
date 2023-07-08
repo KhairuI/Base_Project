@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/purple_200"
+    android:orientation="vertical">
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/tv_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="16dp"
+        android:text="@string/choose_an_option"
+        android:textColor="@color/black"
+        android:textSize="16sp"
+        app:fontFamily="@font/mulish_800" />
+
+    <RadioGroup
+        android:id="@+id/rg_language"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:textColor="@color/black"
+        android:textSize="14sp"
+        app:fontFamily="@font/mulish_600">
+
+        <RadioButton
+            android:id="@+id/rbBn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/bangla"
+            android:textColor="@color/black"
+            android:textSize="14sp"
+            app:buttonTint="@color/black"
+            app:fontFamily="@font/mulish_600" />
+
+        <RadioButton
+            android:id="@+id/rbEn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/english"
+            android:textColor="@color/black"
+            android:textSize="14sp"
+            app:buttonTint="@color/black"
+            app:fontFamily="@font/mulish_600" />
+
+    </RadioGroup>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/tv_cancel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:focusable="false"
+            android:padding="16dp"
+            android:text="@string/cancel"
+            android:textColor="@color/black"
+            android:textSize="16sp"
+            app:fontFamily="@font/mulish_700"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/tv_save"
+            app:layout_constraintHorizontal_chainStyle="spread_inside"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/tv_save"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:focusable="false"
+            android:padding="16dp"
+            android:text="@string/save"
+            android:textColor="@color/black"
+            android:textSize="16sp"
+            app:fontFamily="@font/mulish_700"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/tv_cancel"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</LinearLayout>

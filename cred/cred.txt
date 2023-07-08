@@ -1,0 +1,36 @@
+Keystore Location: /cred/baseproject.jks
+keystore password: 123456
+(hint: FRUIT XBOX Question Visa DRIP XBOX)
+
+Alias: baseproject
+Password: 123456
+(hint: FRUIT XBOX Question Visa DRIP XBOX)
+
+
+First and Last Name: 
+Organization Unit:
+Organization: 
+City or Locality: Dhaka
+State or Province:
+Country Code: 
+
+
+keytool -list -v -alias androiddebugkey -keystore %USERPROFILE%\.android\debug.keystore
+
+
+Project: https://console.cloud.google.com/apis/credentials?project=datadash-16750
+
+Debug:
+-----------------------------------------------------------------------------------------------------------------------------
+keytool -list -v -keystore "%USERPROFILE%\.android\debug.keystore" -alias androiddebugkey -storepass android -keypass android
+
+C:\Users\samiu\AppData\Local\Android\android-studio-canary\jbr\bin\keytool -list -v -keystore C:\Users\samiu\.android/debug.keystore -alias androiddebugkey -storepass android -keypass android
+-----------------------------------------------------------------------------------------------------------------------------
+
+
+Release:
+--------------------------------------------------------------------
+keytool -list -v -keystore your_keystore_name -alias your_alias_name
+
+C:\Users\samiu\AppData\Local\Android\android-studio-canary\jbr\bin\keytool -list -v -keystore G:\datadash-android\cred\datadash.jks -alias datadash
+--------------------------------------------------------------------
