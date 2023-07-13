@@ -1,7 +1,7 @@
 package com.example.baseproject.ui.base.datasource
 
 import com.example.baseproject.R
-import com.example.baseproject.data.network.ApiError
+import com.example.baseproject.data.network.response.ApiError
 import com.example.baseproject.utils.arch.UiText
 import com.google.firebase.crashlytics.FirebaseCrashlytics
 import com.google.gson.JsonSyntaxException

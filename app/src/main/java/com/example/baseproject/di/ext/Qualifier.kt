@@ -2,8 +2,8 @@ package com.example.baseproject.di.ext
 
 object Qualifier {
 
-    internal const val apiService: String = "api_service"
-    internal const val imageService: String = "image_service"
+    internal const val postApiService: String = "post_api_service"
+    internal const val productApiService: String = "product_api_service"
 
     internal const val appKey: String = "app_key"
     internal const val packageName: String = "package"

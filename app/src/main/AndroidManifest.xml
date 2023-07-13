@@ -30,6 +30,10 @@
             android:name=".ui.setting.SettingActivity"
             android:exported="false"/>
 
+        <activity
+            android:name=".ui.post.PostActivity"
+            android:exported="false"/>
+
     </application>
 
 </manifest>

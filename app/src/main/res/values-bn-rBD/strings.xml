@@ -4,6 +4,7 @@
     <string name="build_time">v%1$s বিল্ড টাইম: %2$s</string>
     <string name="home">হোম</string>
     <string name="setting">সেটিংস</string>
+    <string name="post">পোস্ট সমূহ</string>
     <string name="choose_language">আপনার পছন্দের ভাষা নির্বাচন করুন</string>
     <string name="english_bangla">English / বাংলা</string>
     <string name="english">ইংরেজি</string>

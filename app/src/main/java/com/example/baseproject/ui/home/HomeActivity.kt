@@ -12,6 +12,7 @@ import com.example.baseproject.data.database.repository.User
 import com.example.baseproject.data.preferences.PreferenceHelper
 import com.example.baseproject.databinding.ActivityHomeBinding
 import com.example.baseproject.ui.base.BaseActivity
+import com.example.baseproject.ui.post.PostActivity
 import com.example.baseproject.ui.setting.SettingActivity
 import com.example.baseproject.utils.extension.buildTime
 import com.example.baseproject.utils.arch.Result
@@ -63,6 +64,7 @@ class HomeActivity : BaseActivity() {
         binding.btnGetLogin.setOnClickListener {
             Log.d("xxx", "login: ${viewModel.getLogin()}")
         }
+        binding.btnPost.setOnClickListener { parsePost() }
 
         Log.d("xxx", "login: ${pref.isLoggedIn()}")
     }
@@ -98,5 +100,7 @@ class HomeActivity : BaseActivity() {
     }
 
     private fun parseSetting() = startActivity(SettingActivity.getStartIntent(this))
+
+    private fun parsePost() = startActivity(PostActivity.getStartIntent(this))
 
 }

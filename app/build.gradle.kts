@@ -150,15 +150,16 @@ dependencies {
     // In App Update
     implementation("com.google.android.play:core:1.10.3")
 
-    // Spin Kit
-  //  implementation("com.github.ybq:Android-SpinKit:1.4.0")
-
     // Coroutines
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.4")
 
     // Chuck-er
     debugImplementation("com.github.chuckerteam.chucker:library:3.5.2")
     releaseImplementation("com.github.chuckerteam.chucker:library-no-op:3.5.2")
+
+    // Ste-tho
+    implementation("com.facebook.stetho:stetho:1.6.0")
+    implementation("com.facebook.stetho:stetho-okhttp3:1.6.0")
 
     // Glide
     implementation("com.github.bumptech.glide:glide:4.15.1")
@@ -205,6 +206,14 @@ dependencies {
     implementation("androidx.lifecycle:lifecycle-livedata-ktx:2.6.1")
     // Lifecycles only (without ViewModel or LiveData)
     implementation("androidx.lifecycle:lifecycle-runtime:2.6.1")
+
+    // Chuck-er
+    debugImplementation("com.github.chuckerteam.chucker:library:3.5.2")
+    releaseImplementation("com.github.chuckerteam.chucker:library-no-op:3.5.2")
+
+    // Glide
+    implementation("com.github.bumptech.glide:glide:4.15.1")
+    kapt("com.github.bumptech.glide:compiler:4.15.1")
 }
 kapt {
     correctErrorTypes = true
