@@ -90,8 +90,8 @@ android {
         val keyBaseUrl = "BASE_URL"
         val keyIsDevelopment = "IS_DEVELOPMENT"
 
-        val betaUrl = "\"https://beta-url.com/\""
-        val baseUrl = "\"https://main-url.com/\""
+        val betaUrl = "\"https://jsonplaceholder.typicode.com/\""
+        val baseUrl = "\"https://jsonplaceholder.typicode.com/\""
 
         create("beta") {
             dimension = "version"
@@ -153,6 +153,22 @@ dependencies {
     // Spin Kit
   //  implementation("com.github.ybq:Android-SpinKit:1.4.0")
 
+    // Coroutines
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.4")
+
+    // Chuck-er
+    debugImplementation("com.github.chuckerteam.chucker:library:3.5.2")
+    releaseImplementation("com.github.chuckerteam.chucker:library-no-op:3.5.2")
+
+    // Glide
+    implementation("com.github.bumptech.glide:glide:4.15.1")
+    kapt("com.github.bumptech.glide:compiler:4.15.1")
+
+    // Room Database
+    implementation("androidx.room:room-runtime:2.5.2")
+    implementation("androidx.room:room-ktx:2.5.2")
+    kapt("androidx.room:room-compiler:2.5.2")
+
     // Google
     implementation("com.google.android.gms:play-services-location:21.0.1")
     implementation("com.google.android.gms:play-services-auth:20.6.0")
@@ -178,6 +194,9 @@ dependencies {
 
     // firebase
     implementation("com.google.firebase:firebase-crashlytics:18.3.7")
+    implementation("com.google.firebase:firebase-analytics:21.3.0")
+    implementation("com.google.firebase:firebase-messaging:23.1.2")
+    implementation("com.google.firebase:firebase-inappmessaging-display:20.3.2")
 
     // ViewModel
     implementation("androidx.lifecycle:lifecycle-viewmodel:2.6.1")

@@ -13,4 +13,5 @@ object AppConstants {
     internal const val DB_VERSION = BuildConfig.VERSION_CODE
     internal const val PREF_STORAGE_NAME = "pref_storage_client"
     internal const val PREF_SHARED_NAME = "pref_shared_client"
+    internal const val PREF_NAME = "pref_base_project"
 }

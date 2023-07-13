@@ -10,4 +10,13 @@
     <string name="choose_an_option">Choose an option</string>
     <string name="cancel">Cancel</string>
     <string name="save">Save</string>
+    <string name="api_default_error">Something went wrong!</string>
+    <string name="http_unauthorized">Unauthorised User</string>
+    <string name="http_forbidden">Forbidden</string>
+    <string name="http_internal_error">Internal Server Error</string>
+    <string name="http_bad_request">Bad Request</string>
+    <string name="http_no_internet">No Internet Connection</string>
+    <string name="http_json_exception">Something Went Wrong API is not responding properly!</string>
+    <string name="http_socket_timeout">Server connection timeout</string>
+    <string name="http_unknown_host">Unable to connect with server</string>
 </resources>
