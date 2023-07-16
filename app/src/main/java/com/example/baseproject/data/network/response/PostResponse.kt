@@ -1,5 +1,7 @@
 package com.example.baseproject.data.network.response
 
+import com.google.gson.annotations.Expose
+
 data class PostResponse(
-    var datas: List<PostsItem>? = null
+    @Expose var datas: List<PostsItem>? = null
 )

@@ -3,13 +3,15 @@ package com.example.baseproject.di
 import android.content.Context
 import com.chuckerteam.chucker.api.ChuckerInterceptor
 import com.example.baseproject.BuildConfig
-import com.example.baseproject.data.network.service.ApiServicePost
+import com.example.baseproject.data.network.service.ApiService
+import com.example.baseproject.di.ext.AppKeyQualifier
 import com.example.baseproject.di.ext.DeviceIdQualifier
 import com.example.baseproject.di.ext.LanguageQualifier
 import com.example.baseproject.di.ext.PackageNameQualifier
 import com.example.baseproject.di.ext.VersionNameQualifier
 import com.example.baseproject.di.helper.ApiServicePostHelper
 import com.example.baseproject.di.helper.ChuckerInterceptorHelper
+import com.example.baseproject.di.helper.HeaderModel
 import com.example.baseproject.service.BaseProjectApp
 import com.example.baseproject.utils.device.DeviceUtil
 import com.example.baseproject.utils.helper.LocaleManager
@@ -43,16 +45,30 @@ object NetworkModule {
         DeviceUtil.getDeviceId(context)
 
     @Provides
+    internal fun provideHeaderModel(
+        @PackageNameQualifier packageName: String,
+        @VersionNameQualifier versionName: String,
+        @LanguageQualifier language: String,
+        @DeviceIdQualifier deviceId: String
+    ): HeaderModel = HeaderModel(
+        packageName = packageName,
+        versionName = versionName,
+        language = language,
+        deviceId = deviceId
+    )
+
+    @Provides
     @Singleton
     internal fun provideChuckerInterceptor(@ApplicationContext context: Context): ChuckerInterceptor =
         ChuckerInterceptorHelper(context).invoke()
 
     @Provides
     @Singleton
-    internal fun providePostApiService(
+    internal fun provideApiServicePost(
         @ApplicationContext context: Context,
         chuckerInterceptor: ChuckerInterceptor,
-    ): ApiServicePost = ApiServicePostHelper(
-        context = context, chuckerInterceptor = chuckerInterceptor
+        header: HeaderModel
+    ): ApiService = ApiServicePostHelper(
+        context = context, chuckerInterceptor = chuckerInterceptor, header = header
     ).invoke()
 }

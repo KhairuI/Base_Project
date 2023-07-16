@@ -2,7 +2,7 @@ package com.example.baseproject.di.helper
 
 import android.content.Context
 import com.chuckerteam.chucker.api.ChuckerInterceptor
-import com.example.baseproject.data.network.service.ApiServicePost
+import com.example.baseproject.data.network.service.ApiService
 import com.example.baseproject.utils.AppConstants
 import com.example.baseproject.utils.NetworkConstants
 import com.example.baseproject.utils.extension.debug
@@ -18,22 +18,23 @@ import javax.inject.Inject
 
 class ApiServicePostHelper @Inject constructor(
     private val context: Context,
-    private val chuckerInterceptor: ChuckerInterceptor
+    private val chuckerInterceptor: ChuckerInterceptor,
+    private val header: HeaderModel
 ) {
 
     private val dateFormat by lazy { "yyyy-MM-dd'T'HH:mm:ss.SSS" }
 
-    operator fun invoke(): ApiServicePost {
+    operator fun invoke(): ApiService {
         val gson = GsonBuilder().excludeFieldsWithoutExposeAnnotation().serializeNulls()
             .setLenient().setDateFormat(dateFormat).create()
 
         val retrofit = Retrofit.Builder()
-            .baseUrl(AppConstants.BASE_URL)
+            .baseUrl(AppConstants.BASE_URL_POST)
             .addConverterFactory(ScalarsConverterFactory.create())
-            .addConverterFactory(GsonConverterFactory.create())
+            .addConverterFactory(GsonConverterFactory.create(gson))
             .client(client())
             .build()
-        return retrofit.create(ApiServicePost::class.java)
+        return retrofit.create(ApiService::class.java)
     }
 
     private fun client(): OkHttpClient = with(OkHttpClient().newBuilder()) {

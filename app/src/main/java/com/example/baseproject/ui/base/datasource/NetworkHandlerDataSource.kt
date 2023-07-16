@@ -1,5 +1,6 @@
 package com.example.baseproject.ui.base.datasource
 
+import android.util.Log
 import com.example.baseproject.R
 import com.example.baseproject.data.network.response.ApiError
 import com.example.baseproject.utils.arch.UiText
@@ -20,7 +21,9 @@ interface NetworkHandlerDataSource {
 class NetworkHandlerDataSourceImpl @Inject constructor() : NetworkHandlerDataSource {
 
     override suspend fun handleException(e: Exception): UiText {
+        Log.d("xxx", "Exception: ${e.message}")
         e.cause?.let { throwable ->
+            Log.d("xxx", "handleException: $throwable")
             firebaseNotify(userId = 0, throwable = throwable)
         }
         val uiText: UiText = when (e) {

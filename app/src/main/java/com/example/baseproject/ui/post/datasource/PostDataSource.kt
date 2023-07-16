@@ -1,11 +1,9 @@
 package com.example.baseproject.ui.post.datasource
 
 import android.content.Context
-import android.util.Log
 import com.example.baseproject.R
-import com.example.baseproject.data.network.response.PostResponse
 import com.example.baseproject.data.network.response.Posts
-import com.example.baseproject.data.network.service.ApiServicePost
+import com.example.baseproject.data.network.service.ApiService
 import com.example.baseproject.di.ext.IoDispatcher
 import com.example.baseproject.ui.base.datasource.NetworkHandlerDataSource
 import com.example.baseproject.utils.arch.Result
@@ -25,7 +23,7 @@ interface PostDataSource {
 class PostDataSourceImpl @Inject constructor(
     @ApplicationContext private val context: Context,
     @IoDispatcher private val ioDispatcher: CoroutineDispatcher,
-    private val apiServicePost: ApiServicePost,
+    private val apiService: ApiService,
     private val networkHandlerDataSource: NetworkHandlerDataSource
 ) : PostDataSource {
 
@@ -33,15 +31,16 @@ class PostDataSourceImpl @Inject constructor(
 
     override suspend fun getAllPost(): Flow<Result<Posts>> = flow {
         try {
-          //  emit(Result.Loading())
+            //  emit(Result.Loading())
 
             if (!hasInternetConnection()) {
                 emit(Result.Error(UiText.StringResource(R.string.http_no_internet)))
                 return@flow
             }
 
-            val response = apiServicePost.postApiCall()
-            Log.d("xxx", "error: ${response.errorBody()?.string()}")
+            /*val response = apiServicePost.postApiCall()
+
+            Log.d("xxx", "body: ${response.body()}")
             Log.d("xxx", "code: ${response.code()}")
             Log.d("xxx", "message: ${response.message()}")
             if (!response.isSuccessful) {
@@ -52,8 +51,10 @@ class PostDataSourceImpl @Inject constructor(
             }
 
             response.body()?.let { data ->
+                Log.d("xxx", "data: $data")
                 emit(Result.Success(data))
-            }
+            }*/
+
 
         } catch (e: Exception) {
             emit(Result.Error(networkHandlerDataSource.handleException(e)))

@@ -7,6 +7,6 @@ import com.google.gson.annotations.SerializedName
 data class PostsItem(
     @Expose @SerializedName("body") var body: String? = null,
     @Expose @SerializedName("id") var id: Int? = null,
-    @Expose @SerializedName("title") val title: String? = null,
-    @Expose @SerializedName("userId") val userId: Int? = null
+    @Expose @SerializedName("title") var title: String? = null,
+    @Expose @SerializedName("userId") var userId: Int? = null
 )

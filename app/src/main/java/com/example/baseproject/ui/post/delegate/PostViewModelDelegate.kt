@@ -1,6 +1,5 @@
 package com.example.baseproject.ui.post.delegate
 
-import com.example.baseproject.data.network.response.PostResponse
 import com.example.baseproject.data.network.response.Posts
 import com.example.baseproject.di.ext.ApplicationScope
 import com.example.baseproject.ui.post.datasource.PostDataSource
