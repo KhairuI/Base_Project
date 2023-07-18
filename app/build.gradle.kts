@@ -187,7 +187,6 @@ dependencies {
     implementation("com.squareup.okhttp3:logging-interceptor:5.0.0-alpha.7")
     implementation("com.squareup.retrofit2:retrofit:2.9.0")
     implementation("com.squareup.retrofit2:converter-gson:2.9.0")
-    implementation("com.squareup.retrofit2:adapter-rxjava3:2.9.0")
     implementation("com.squareup.retrofit2:converter-scalars:2.9.0")
 
     // Parser
@@ -201,11 +200,6 @@ dependencies {
 
     // ViewModel
     implementation("androidx.lifecycle:lifecycle-viewmodel:2.6.1")
-    // LiveData
-    implementation("androidx.lifecycle:lifecycle-livedata:2.6.1")
-    implementation("androidx.lifecycle:lifecycle-livedata-ktx:2.6.1")
-    // Lifecycles only (without ViewModel or LiveData)
-    implementation("androidx.lifecycle:lifecycle-runtime:2.6.1")
 
     // Chuck-er
     debugImplementation("com.github.chuckerteam.chucker:library:3.5.2")

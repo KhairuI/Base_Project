@@ -18,8 +18,7 @@ import javax.inject.Inject
 
 class ApiServicePostHelper @Inject constructor(
     private val context: Context,
-    private val chuckerInterceptor: ChuckerInterceptor,
-    private val header: HeaderModel
+    private val chuckerInterceptor: ChuckerInterceptor
 ) {
 
     private val dateFormat by lazy { "yyyy-MM-dd'T'HH:mm:ss.SSS" }
@@ -29,7 +28,7 @@ class ApiServicePostHelper @Inject constructor(
             .setLenient().setDateFormat(dateFormat).create()
 
         val retrofit = Retrofit.Builder()
-            .baseUrl(AppConstants.BASE_URL_POST)
+            .baseUrl(AppConstants.BASE_URL_LOGIN)
             .addConverterFactory(ScalarsConverterFactory.create())
             .addConverterFactory(GsonConverterFactory.create(gson))
             .client(client())

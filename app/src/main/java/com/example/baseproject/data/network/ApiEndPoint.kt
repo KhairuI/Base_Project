@@ -5,5 +5,9 @@ object ApiEndPoint {
     const val ENDPOINT_POSTS = "posts"
     const val ENDPOINT_PRODUCTS = "products"
 
+    private const val PATH_URL = "api"
+
+    const val ENDPOINT_LOGIN = "$PATH_URL/login"
+
 
 }

@@ -4,14 +4,12 @@ import android.content.Context
 import com.chuckerteam.chucker.api.ChuckerInterceptor
 import com.example.baseproject.BuildConfig
 import com.example.baseproject.data.network.service.ApiService
-import com.example.baseproject.di.ext.AppKeyQualifier
 import com.example.baseproject.di.ext.DeviceIdQualifier
 import com.example.baseproject.di.ext.LanguageQualifier
 import com.example.baseproject.di.ext.PackageNameQualifier
 import com.example.baseproject.di.ext.VersionNameQualifier
 import com.example.baseproject.di.helper.ApiServicePostHelper
 import com.example.baseproject.di.helper.ChuckerInterceptorHelper
-import com.example.baseproject.di.helper.HeaderModel
 import com.example.baseproject.service.BaseProjectApp
 import com.example.baseproject.utils.device.DeviceUtil
 import com.example.baseproject.utils.helper.LocaleManager
@@ -24,7 +22,7 @@ import javax.inject.Singleton
 
 @Module
 @InstallIn(SingletonComponent::class)
-object NetworkModule {
+object ApiModule {
 
     @Provides
     @PackageNameQualifier
@@ -45,19 +43,6 @@ object NetworkModule {
         DeviceUtil.getDeviceId(context)
 
     @Provides
-    internal fun provideHeaderModel(
-        @PackageNameQualifier packageName: String,
-        @VersionNameQualifier versionName: String,
-        @LanguageQualifier language: String,
-        @DeviceIdQualifier deviceId: String
-    ): HeaderModel = HeaderModel(
-        packageName = packageName,
-        versionName = versionName,
-        language = language,
-        deviceId = deviceId
-    )
-
-    @Provides
     @Singleton
     internal fun provideChuckerInterceptor(@ApplicationContext context: Context): ChuckerInterceptor =
         ChuckerInterceptorHelper(context).invoke()
@@ -66,9 +51,8 @@ object NetworkModule {
     @Singleton
     internal fun provideApiServicePost(
         @ApplicationContext context: Context,
-        chuckerInterceptor: ChuckerInterceptor,
-        header: HeaderModel
+        chuckerInterceptor: ChuckerInterceptor
     ): ApiService = ApiServicePostHelper(
-        context = context, chuckerInterceptor = chuckerInterceptor, header = header
+        context = context, chuckerInterceptor = chuckerInterceptor
     ).invoke()
 }

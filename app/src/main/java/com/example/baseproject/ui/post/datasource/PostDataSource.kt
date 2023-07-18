@@ -1,7 +1,10 @@
 package com.example.baseproject.ui.post.datasource
 
 import android.content.Context
+import android.util.Log
 import com.example.baseproject.R
+import com.example.baseproject.data.network.response.LoginRequest
+import com.example.baseproject.data.network.response.LoginResponse
 import com.example.baseproject.data.network.response.Posts
 import com.example.baseproject.data.network.service.ApiService
 import com.example.baseproject.di.ext.IoDispatcher
@@ -17,7 +20,7 @@ import kotlinx.coroutines.flow.flowOn
 import javax.inject.Inject
 
 interface PostDataSource {
-    suspend fun getAllPost(): Flow<Result<Posts>>
+    suspend fun login(): Flow<Result<LoginResponse>>
 }
 
 class PostDataSourceImpl @Inject constructor(
@@ -29,7 +32,7 @@ class PostDataSourceImpl @Inject constructor(
 
     private fun hasInternetConnection(): Boolean = context.isNetworkConnected()
 
-    override suspend fun getAllPost(): Flow<Result<Posts>> = flow {
+    override suspend fun login(): Flow<Result<LoginResponse>> = flow {
         try {
             //  emit(Result.Loading())
 
@@ -38,7 +41,7 @@ class PostDataSourceImpl @Inject constructor(
                 return@flow
             }
 
-            /*val response = apiServicePost.postApiCall()
+         /*   val response = apiService.loginApiCall(LoginRequest("s.admin@gmail.com","654321"))
 
             Log.d("xxx", "body: ${response.body()}")
             Log.d("xxx", "code: ${response.code()}")
@@ -54,7 +57,6 @@ class PostDataSourceImpl @Inject constructor(
                 Log.d("xxx", "data: $data")
                 emit(Result.Success(data))
             }*/
-
 
         } catch (e: Exception) {
             emit(Result.Error(networkHandlerDataSource.handleException(e)))
