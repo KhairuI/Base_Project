@@ -8,9 +8,4 @@ import javax.inject.Inject
 @HiltViewModel
 class PostViewModel @Inject constructor(
     private val postViewModelDelegate: PostViewModelDelegate
-) : BaseViewModel(), PostViewModelDelegate by postViewModelDelegate{
-
-    init {
-        postViewModelDelegate.getAllPost()
-    }
-}
+) : BaseViewModel(), PostViewModelDelegate by postViewModelDelegate

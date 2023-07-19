@@ -1,7 +1,6 @@
 package com.example.baseproject.ui.post.delegate
 
-import com.example.baseproject.data.network.response.LoginResponse
-import com.example.baseproject.data.network.response.Posts
+import com.example.baseproject.data.network.response.Quote
 import com.example.baseproject.di.ext.ApplicationScope
 import com.example.baseproject.ui.post.datasource.PostDataSource
 import com.example.baseproject.utils.arch.Result
@@ -15,7 +14,7 @@ import javax.inject.Inject
 
 interface PostViewModelDelegate {
     fun getAllPost()
-    val getAllPostResponse: Flow<Result<LoginResponse>>
+    val getAllPostResponse: Flow<Result<Quote>>
 }
 
 internal class PostViewModelDelegateImpl @Inject constructor(
@@ -23,7 +22,7 @@ internal class PostViewModelDelegateImpl @Inject constructor(
     private val postDataSource: PostDataSource,
 ) : PostViewModelDelegate {
 
-    private val _getAllPostResponse = Channel<Result<LoginResponse>>(Channel.CONFLATED)
+    private val _getAllPostResponse = Channel<Result<Quote>>(Channel.CONFLATED)
     override val getAllPostResponse = _getAllPostResponse.receiveAsFlow()
 
     override fun getAllPost() {
@@ -33,5 +32,4 @@ internal class PostViewModelDelegateImpl @Inject constructor(
             }
         }
     }
-
 }

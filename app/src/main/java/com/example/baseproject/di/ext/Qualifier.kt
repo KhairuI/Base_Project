@@ -1,5 +1,12 @@
 package com.example.baseproject.di.ext
 
+import javax.inject.Qualifier
+
+
+@Retention(AnnotationRetention.BINARY)
+@Qualifier
+annotation class ApiServicePostQualifier
+
 object Qualifier {
 
     internal const val postApiService: String = "post_api_service"

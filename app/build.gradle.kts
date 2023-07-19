@@ -60,8 +60,8 @@ android {
         }
 
         debug {
-            isMinifyEnabled = true
-            isShrinkResources = true
+            isMinifyEnabled = false
+            isShrinkResources = false
             proguardFiles(getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro")
             isDebuggable = true
 
@@ -152,6 +152,7 @@ dependencies {
 
     // Coroutines
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.4")
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.6.4")
 
     // Chuck-er
     debugImplementation("com.github.chuckerteam.chucker:library:3.5.2")
@@ -193,9 +194,9 @@ dependencies {
     implementation("com.google.code.gson:gson:2.10.1")
 
     // firebase
-    implementation("com.google.firebase:firebase-crashlytics:18.3.7")
+    implementation("com.google.firebase:firebase-crashlytics:18.4.0")
     implementation("com.google.firebase:firebase-analytics:21.3.0")
-    implementation("com.google.firebase:firebase-messaging:23.1.2")
+    implementation("com.google.firebase:firebase-messaging:23.2.0")
     implementation("com.google.firebase:firebase-inappmessaging-display:20.3.2")
 
     // ViewModel

@@ -3,7 +3,7 @@ package com.example.baseproject.di
 import android.content.Context
 import com.chuckerteam.chucker.api.ChuckerInterceptor
 import com.example.baseproject.BuildConfig
-import com.example.baseproject.data.network.service.ApiService
+import com.example.baseproject.data.network.service.ApiServicePost
 import com.example.baseproject.di.ext.DeviceIdQualifier
 import com.example.baseproject.di.ext.LanguageQualifier
 import com.example.baseproject.di.ext.PackageNameQualifier
@@ -22,7 +22,7 @@ import javax.inject.Singleton
 
 @Module
 @InstallIn(SingletonComponent::class)
-object ApiModule {
+object NetworkModule {
 
     @Provides
     @PackageNameQualifier
@@ -49,10 +49,6 @@ object ApiModule {
 
     @Provides
     @Singleton
-    internal fun provideApiServicePost(
-        @ApplicationContext context: Context,
-        chuckerInterceptor: ChuckerInterceptor
-    ): ApiService = ApiServicePostHelper(
-        context = context, chuckerInterceptor = chuckerInterceptor
-    ).invoke()
+    internal fun provideApiServicePost(chuckerInterceptor: ChuckerInterceptor): ApiServicePost =
+        ApiServicePostHelper(chuckerInterceptor).invoke()
 }
