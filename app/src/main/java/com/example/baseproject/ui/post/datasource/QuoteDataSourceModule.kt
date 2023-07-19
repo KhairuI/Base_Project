@@ -8,10 +8,10 @@ import javax.inject.Singleton
 
 @InstallIn(SingletonComponent::class)
 @Module
-object PostDataSourceModule {
+object QuoteDataSourceModule {
 
     @Provides
     @Singleton
-    internal fun providePostDataSource(postDataSourceImpl: PostDataSourceImpl): PostDataSource =
-        postDataSourceImpl
+    internal fun provideQuoteDataSource(quoteDataSourceImpl: QuoteDataSourceImpl): QuoteDataSource =
+        quoteDataSourceImpl
 }

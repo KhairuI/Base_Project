@@ -28,23 +28,19 @@
                 android:id="@+id/tvID"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:ellipsize="end"
-                android:maxLines="1"
                 android:textColor="@color/black"
-                android:textSize="18sp"
+                android:textSize="16sp"
                 tools:text="@tools:sample/lorem/random"
-                android:layout_marginEnd="8dp"
                 app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent"/>
 
             <com.google.android.material.textview.MaterialTextView
-                android:id="@+id/tvUserID"
+                android:id="@+id/tvQuoteText"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:ellipsize="end"
-                android:maxLines="1"
                 android:textColor="@color/black"
-                android:textSize="18sp"
+                android:textSize="16sp"
                 android:layout_marginTop="4dp"
                 tools:text="@tools:sample/lorem/random"
                 app:layout_constraintStart_toStartOf="@id/tvID"
@@ -52,32 +48,16 @@
                 app:layout_constraintTop_toBottomOf="@id/tvID"/>
 
             <com.google.android.material.textview.MaterialTextView
-                android:id="@+id/tvPostTitle"
+                android:id="@+id/tvQuoteAuthor"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:ellipsize="end"
-                android:maxLines="1"
                 android:textColor="@color/black"
-                android:textSize="18sp"
+                android:textSize="16sp"
                 android:layout_marginTop="4dp"
                 tools:text="@tools:sample/lorem/random"
-                app:layout_constraintStart_toStartOf="@id/tvUserID"
-                app:layout_constraintEnd_toEndOf="@id/tvUserID"
-                app:layout_constraintTop_toBottomOf="@id/tvUserID"/>
-
-            <com.google.android.material.textview.MaterialTextView
-                android:id="@+id/tvBody"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:ellipsize="end"
-                android:maxLines="1"
-                android:textColor="@color/black"
-                android:textSize="18sp"
-                android:layout_marginTop="4dp"
-                tools:text="@tools:sample/lorem/random"
-                app:layout_constraintStart_toStartOf="@id/tvID"
-                app:layout_constraintEnd_toEndOf="@id/tvID"
-                app:layout_constraintTop_toBottomOf="@id/tvPostTitle"/>
+                app:layout_constraintStart_toStartOf="@id/tvQuoteText"
+                app:layout_constraintEnd_toEndOf="@id/tvQuoteText"
+                app:layout_constraintTop_toBottomOf="@id/tvQuoteText"/>
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>

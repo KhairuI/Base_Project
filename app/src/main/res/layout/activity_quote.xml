@@ -58,11 +58,11 @@
             android:layout_height="wrap_content">
 
             <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/listAssignAgent"
+                android:id="@+id/listQuote"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 tools:itemCount="3"
-                tools:listitem="@layout/list_item_post"
+                tools:listitem="@layout/list_item_quote"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent"/>

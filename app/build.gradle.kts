@@ -90,8 +90,8 @@ android {
         val keyBaseUrl = "BASE_URL"
         val keyIsDevelopment = "IS_DEVELOPMENT"
 
-        val betaUrl = "\"https://jsonplaceholder.typicode.com/\""
-        val baseUrl = "\"https://jsonplaceholder.typicode.com/\""
+        val betaUrl = "\"https://dummyjson.com/\""
+        val baseUrl = "\"https://dummyjson.com/\""
 
         create("beta") {
             dimension = "version"

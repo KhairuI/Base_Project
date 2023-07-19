@@ -1,10 +1,9 @@
 package com.example.baseproject.ui.post.datasource
 
 import android.content.Context
-import android.util.Log
 import com.example.baseproject.R
 import com.example.baseproject.data.network.response.Quote
-import com.example.baseproject.data.network.service.ApiServicePost
+import com.example.baseproject.data.network.service.ApiServiceQuote
 import com.example.baseproject.di.ext.IoDispatcher
 import com.example.baseproject.ui.base.datasource.NetworkHandlerDataSource
 import com.example.baseproject.utils.arch.Result
@@ -17,20 +16,20 @@ import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.flowOn
 import javax.inject.Inject
 
-interface PostDataSource {
-    suspend fun login(): Flow<Result<Quote>>
+interface QuoteDataSource {
+    suspend fun getQuote(): Flow<Result<Quote>>
 }
 
-class PostDataSourceImpl @Inject constructor(
+class QuoteDataSourceImpl @Inject constructor(
     @ApplicationContext private val context: Context,
     @IoDispatcher private val ioDispatcher: CoroutineDispatcher,
-    private val apiServicePost: ApiServicePost,
+    private val apiServiceQuote: ApiServiceQuote,
     private val networkHandlerDataSource: NetworkHandlerDataSource
-) : PostDataSource {
+) : QuoteDataSource {
 
     private fun hasInternetConnection(): Boolean = context.isNetworkConnected()
 
-    override suspend fun login(): Flow<Result<Quote>> = flow {
+    override suspend fun getQuote(): Flow<Result<Quote>> = flow {
         try {
             emit(Result.Loading())
 
@@ -39,11 +38,7 @@ class PostDataSourceImpl @Inject constructor(
                 return@flow
             }
 
-            val response = apiServicePost.postApiCall()
-
-            Log.d("xxx", "body: ${response.body()}")
-            Log.d("xxx", "code: ${response.code()}")
-            Log.d("xxx", "message: ${response.message()}")
+            val response = apiServiceQuote.quoteApiCall()
             if (!response.isSuccessful) {
                 response.errorBody()?.string().let { errorMsg ->
                     emit(Result.Error(UiText.DynamicString(errorMsg)))
@@ -52,7 +47,6 @@ class PostDataSourceImpl @Inject constructor(
             }
 
             response.body()?.let { data ->
-                Log.d("xxx", "data: $data")
                 emit(Result.Success(data))
             }
         } catch (e: Exception) {

@@ -2,7 +2,7 @@ package com.example.baseproject.ui.post.delegate
 
 import com.example.baseproject.data.network.response.Quote
 import com.example.baseproject.di.ext.ApplicationScope
-import com.example.baseproject.ui.post.datasource.PostDataSource
+import com.example.baseproject.ui.post.datasource.QuoteDataSource
 import com.example.baseproject.utils.arch.Result
 import com.example.baseproject.utils.arch.tryOffer
 import kotlinx.coroutines.CoroutineScope
@@ -12,23 +12,23 @@ import kotlinx.coroutines.flow.receiveAsFlow
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
-interface PostViewModelDelegate {
-    fun getAllPost()
-    val getAllPostResponse: Flow<Result<Quote>>
+interface QuoteViewModelDelegate {
+    fun getQuote()
+    val getQuoteResponse: Flow<Result<Quote>>
 }
 
-internal class PostViewModelDelegateImpl @Inject constructor(
+internal class QuoteViewModelDelegateImpl @Inject constructor(
     @ApplicationScope val applicationScope: CoroutineScope,
-    private val postDataSource: PostDataSource,
-) : PostViewModelDelegate {
+    private val quoteDataSource: QuoteDataSource,
+) : QuoteViewModelDelegate {
 
-    private val _getAllPostResponse = Channel<Result<Quote>>(Channel.CONFLATED)
-    override val getAllPostResponse = _getAllPostResponse.receiveAsFlow()
+    private val _getQuoteResponse = Channel<Result<Quote>>(Channel.CONFLATED)
+    override val getQuoteResponse = _getQuoteResponse.receiveAsFlow()
 
-    override fun getAllPost() {
+    override fun getQuote() {
         applicationScope.launch {
-            postDataSource.login().collect { result ->
-                _getAllPostResponse.tryOffer(result)
+            quoteDataSource.getQuote().collect { result ->
+                _getQuoteResponse.tryOffer(result)
             }
         }
     }

@@ -5,9 +5,9 @@ import com.example.baseproject.data.network.response.Quote
 import retrofit2.Response
 import retrofit2.http.*
 
-interface ApiServicePost {
+interface ApiServiceQuote {
 
     @GET(ApiEndPoint.ENDPOINT_QUOTES)
-    suspend fun postApiCall(): Response<Quote>
+    suspend fun quoteApiCall(): Response<Quote>
 
 }

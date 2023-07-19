@@ -8,10 +8,10 @@ import javax.inject.Singleton
 
 @Module
 @InstallIn(SingletonComponent::class)
-object PostViewModelDelegateModule {
+object QuoteViewModelDelegateModule {
 
     @Provides
     @Singleton
-    internal fun providePostViewModelDelegate(postViewModelDelegateImpl: PostViewModelDelegateImpl): PostViewModelDelegate =
-        postViewModelDelegateImpl
+    internal fun provideQuoteViewModelDelegate(quoteViewModelDelegateImpl: QuoteViewModelDelegateImpl): QuoteViewModelDelegate =
+        quoteViewModelDelegateImpl
 }
