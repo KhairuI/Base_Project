@@ -3,11 +3,13 @@ package com.example.baseproject.di
 import android.content.Context
 import com.chuckerteam.chucker.api.ChuckerInterceptor
 import com.example.baseproject.BuildConfig
+import com.example.baseproject.data.network.service.ApiServiceFCM
 import com.example.baseproject.data.network.service.ApiServiceQuote
 import com.example.baseproject.di.ext.DeviceIdQualifier
 import com.example.baseproject.di.ext.LanguageQualifier
 import com.example.baseproject.di.ext.PackageNameQualifier
 import com.example.baseproject.di.ext.VersionNameQualifier
+import com.example.baseproject.di.helper.ApiServiceFCMHelper
 import com.example.baseproject.di.helper.ApiServiceQuoteHelper
 import com.example.baseproject.di.helper.ChuckerInterceptorHelper
 import com.example.baseproject.service.BaseProjectApp
@@ -49,6 +51,11 @@ object NetworkModule {
 
     @Provides
     @Singleton
-    internal fun provideApiServicePost(chuckerInterceptor: ChuckerInterceptor): ApiServiceQuote =
+    internal fun provideApiServiceQuote(chuckerInterceptor: ChuckerInterceptor): ApiServiceQuote =
         ApiServiceQuoteHelper(chuckerInterceptor).invoke()
+
+    @Provides
+    @Singleton
+    internal fun provideApiServiceFCM(chuckerInterceptor: ChuckerInterceptor): ApiServiceFCM =
+        ApiServiceFCMHelper(chuckerInterceptor).invoke()
 }

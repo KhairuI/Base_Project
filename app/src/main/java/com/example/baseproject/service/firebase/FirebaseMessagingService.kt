@@ -15,17 +15,17 @@ class FirebaseMessagingService : FirebaseMessagingService() {
     override fun onMessageReceived(remoteMessage: RemoteMessage) {
         val pref = AppPreferenceHelper(this, AppConstants.PREF_NAME)
 
-        Log.d("xxx", "onMessageReceived: ${remoteMessage.data}")
-        val data = remoteMessage.data
-        val flag = data["notification_flag"]
+        Log.d("xxx", "title: ${remoteMessage.notification?.title}")
+        Log.d("xxx", "body: ${remoteMessage.notification?.body}")
+
 
         remoteMessage.notification?.let { message ->
-            safeLet(message.title, message.body, flag) { title, body, flag ->
+            safeLet(message.title, message.body) { title, body ->
                 BroadcastHelper.broadcast(this, null)
 
                 if(pref.getNotificationPref()){
                     NotificationHelper.showNotification(
-                        context = this, titleText = title, bodyText = body, flag = flag.toInt()
+                        context = this, titleText = title, bodyText = body
                     )
                 }
             }

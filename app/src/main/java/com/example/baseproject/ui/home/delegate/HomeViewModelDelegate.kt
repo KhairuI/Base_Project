@@ -1,6 +1,7 @@
 package com.example.baseproject.ui.home.delegate
 
 import com.example.baseproject.data.database.repository.User
+import com.example.baseproject.data.network.response.NotificationResponse
 import com.example.baseproject.di.ext.ApplicationScope
 import com.example.baseproject.ui.home.datasource.HomeDataSource
 import com.example.baseproject.utils.arch.Result
@@ -16,8 +17,8 @@ interface HomeViewModelDelegate {
     fun setUser(user: User)
     fun getAllUser()
     val getAllUserResponse: Flow<Result<List<User>>>
-    fun setLogin(isLogin: Boolean)
-    fun getLogin(): Boolean
+    fun sendNotification()
+    val sendNotificationResponse: Flow<Result<NotificationResponse>>
 }
 
 internal class HomeViewModelDelegateImpl @Inject constructor(
@@ -28,13 +29,8 @@ internal class HomeViewModelDelegateImpl @Inject constructor(
     private val _getAllUserResponse = Channel<Result<List<User>>>(Channel.CONFLATED)
     override val getAllUserResponse = _getAllUserResponse.receiveAsFlow()
 
-    override fun setLogin(isLogin: Boolean) {
-        applicationScope.launch {
-            homeDataSource.setLogin(isLogin)
-        }
-    }
-
-    override fun getLogin(): Boolean = homeDataSource.getLogin()
+    private val _sendNotificationResponse = Channel<Result<NotificationResponse>>(Channel.CONFLATED)
+    override val sendNotificationResponse = _sendNotificationResponse.receiveAsFlow()
 
     override fun setUser(user: User) {
         applicationScope.launch {
@@ -46,6 +42,14 @@ internal class HomeViewModelDelegateImpl @Inject constructor(
         applicationScope.launch {
             homeDataSource.getAllUser().collect { result ->
                 _getAllUserResponse.tryOffer(result)
+            }
+        }
+    }
+
+    override fun sendNotification() {
+        applicationScope.launch {
+            homeDataSource.sendNotification().collect { result ->
+                _sendNotificationResponse.tryOffer(result)
             }
         }
     }

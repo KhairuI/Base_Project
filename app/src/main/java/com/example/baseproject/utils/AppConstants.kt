@@ -5,6 +5,7 @@ import com.example.baseproject.BuildConfig
 object AppConstants {
 
     internal const val BASE_URL: String = BuildConfig.BASE_URL
+    internal const val FCM_URL: String = "https://fcm.googleapis.com/"
     internal const val IS_BUILD_SHOW: Boolean = BuildConfig.IS_DEVELOPMENT
     internal const val IS_LOG_ENABLE: Boolean = BuildConfig.IS_DEVELOPMENT
     internal const val IS_SECURE_SCREENSHOT: Boolean = false

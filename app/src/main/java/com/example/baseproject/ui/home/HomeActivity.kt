@@ -14,9 +14,14 @@ import com.example.baseproject.databinding.ActivityHomeBinding
 import com.example.baseproject.ui.base.BaseActivity
 import com.example.baseproject.ui.quote.QuoteActivity
 import com.example.baseproject.ui.setting.SettingActivity
-import com.example.baseproject.utils.extension.buildTime
+import com.example.baseproject.utils.AppConstants
+import com.example.baseproject.utils.CommonUtil
 import com.example.baseproject.utils.arch.Result
+import com.example.baseproject.utils.extension.buildTime
+import com.example.baseproject.utils.extension.error
+import com.example.baseproject.utils.extension.getResString
 import com.example.baseproject.utils.extension.loading
+import com.example.baseproject.utils.extension.visible
 import com.google.android.gms.tasks.OnCompleteListener
 import com.google.firebase.messaging.FirebaseMessaging
 import dagger.hilt.android.AndroidEntryPoint
@@ -29,7 +34,6 @@ class HomeActivity : BaseActivity() {
     private val viewModel by viewModels<HomeViewModel>()
 
     private lateinit var binding: ActivityHomeBinding
-    private var login = true
 
     @Inject
     lateinit var pref: PreferenceHelper
@@ -55,12 +59,13 @@ class HomeActivity : BaseActivity() {
     override fun initView() {
         binding.imgSetting.setOnClickListener { parseSetting() }
         binding.btnSetUser.setOnClickListener {
-            viewModel.setUser(User(1,"khairul","01515"))
+            viewModel.setUser(User(1, "khairul", "01515"))
         }
         binding.btnGetUser.setOnClickListener {
             viewModel.getAllUser()
         }
         binding.btnPost.setOnClickListener { parsePost() }
+        binding.btnNotification.setOnClickListener { viewModel.sendNotification() }
         firebaseFCM()
 
     }
@@ -73,13 +78,33 @@ class HomeActivity : BaseActivity() {
                         Log.d("xxx", "observeViewModel: enter")
                         when (result) {
                             is Result.Error -> {
-                                Log.d("xxx", "observeViewModel: Error")
                                 error(result.uiText)
                             }
+
                             is Result.Loading -> {
-                                Log.d("xxx", "observeViewModel: Loading")
                                 loading(result.isLoading)
                             }
+
+                            is Result.Success -> {
+                                Log.d("xxx", "observeViewModel: Success")
+                                Log.d("xxx", "user list: ${result.data}")
+                            }
+                        }
+                    }
+                }
+
+                launch {
+                    viewModel.sendNotificationResponse.collect { result ->
+                        Log.d("xxx", "observeViewModel: enter")
+                        when (result) {
+                            is Result.Error -> {
+                                error(result.uiText)
+                            }
+
+                            is Result.Loading -> {
+                                loading(result.isLoading)
+                            }
+
                             is Result.Success -> {
                                 Log.d("xxx", "observeViewModel: Success")
                                 Log.d("xxx", "user list: ${result.data}")
@@ -92,7 +117,11 @@ class HomeActivity : BaseActivity() {
     }
 
     override fun dev() {
-        binding.tvBuildTime.buildTime()
+        if (AppConstants.IS_BUILD_SHOW) {
+            binding.tvBuildTime.visible()
+            binding.tvBuildTime.text = getResString(CommonUtil.buildTime())
+        }
+
     }
 
     private fun parseSetting() = startActivity(SettingActivity.getStartIntent(this))
@@ -105,7 +134,11 @@ class HomeActivity : BaseActivity() {
                 return@OnCompleteListener
             }
 
-            task.result?.let { token -> pref.setDeviceFcm(token) }
+            task.result?.let { token ->
+                if (token != pref.getDeviceFcm()) {
+                    pref.setDeviceFcm(token)
+                }
+            }
         })
     }
 

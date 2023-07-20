@@ -24,8 +24,7 @@ object NotificationHelper {
     fun showNotification(
         context: Context,
         titleText: String,
-        bodyText: String,
-        flag: Int
+        bodyText: String
     ) {
         try {
             val title = titleText.toSpanned()

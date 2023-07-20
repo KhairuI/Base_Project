@@ -209,6 +209,9 @@ dependencies {
     // Glide
     implementation("com.github.bumptech.glide:glide:4.15.1")
     kapt("com.github.bumptech.glide:compiler:4.15.1")
+
+    // Toasty
+    implementation("com.github.GrenderG:Toasty:1.5.2")
 }
 kapt {
     correctErrorTypes = true

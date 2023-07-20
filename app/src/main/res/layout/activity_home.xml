@@ -44,6 +44,7 @@
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.core.widget.NestedScrollView
+        android:id="@+id/scrollView"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         app:layout_constraintStart_toStartOf="parent"
@@ -105,13 +106,16 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
-        android:layout_marginBottom="8dp"
+        android:layout_marginBottom="4dp"
         android:gravity="end"
         android:textColor="@color/black"
         android:textSize="12sp"
+        android:visibility="gone"
+        tools:visibility="visible"
         app:fontFamily="@font/mulish_700"
         tools:text="dd-MMM-yyyy, hh:mm a"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"/>
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/scrollView"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
