@@ -1,7 +1,7 @@
-package com.example.baseproject.ui.post
+package com.example.baseproject.ui.quote
 
 import com.example.baseproject.ui.base.BaseViewModel
-import com.example.baseproject.ui.post.delegate.QuoteViewModelDelegate
+import com.example.baseproject.ui.quote.delegate.QuoteViewModelDelegate
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 

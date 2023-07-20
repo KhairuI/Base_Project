@@ -1,4 +1,4 @@
-package com.example.baseproject.ui.post.delegate
+package com.example.baseproject.ui.quote.delegate
 
 import dagger.Module
 import dagger.Provides

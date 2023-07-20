@@ -32,7 +32,7 @@
             android:exported="false" />
 
         <activity
-            android:name=".ui.post.QuoteActivity"
+            android:name=".ui.quote.QuoteActivity"
             android:exported="false" />
 
     </application>

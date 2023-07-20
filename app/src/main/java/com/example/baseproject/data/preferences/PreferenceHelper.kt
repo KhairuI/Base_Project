@@ -6,4 +6,12 @@ interface PreferenceHelper {
 
     fun setLoggedIn(isLoggedIn: Boolean)
 
+    fun getDeviceFcm(): String
+
+    fun setDeviceFcm(deviceFcm: String)
+
+    fun getNotificationPref(): Boolean
+
+    fun setNotificationPref(isNotificationAllow: Boolean)
+
 }

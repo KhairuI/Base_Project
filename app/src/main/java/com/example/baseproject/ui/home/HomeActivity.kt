@@ -12,11 +12,13 @@ import com.example.baseproject.data.database.repository.User
 import com.example.baseproject.data.preferences.PreferenceHelper
 import com.example.baseproject.databinding.ActivityHomeBinding
 import com.example.baseproject.ui.base.BaseActivity
-import com.example.baseproject.ui.post.QuoteActivity
+import com.example.baseproject.ui.quote.QuoteActivity
 import com.example.baseproject.ui.setting.SettingActivity
 import com.example.baseproject.utils.extension.buildTime
 import com.example.baseproject.utils.arch.Result
 import com.example.baseproject.utils.extension.loading
+import com.google.android.gms.tasks.OnCompleteListener
+import com.google.firebase.messaging.FirebaseMessaging
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 import javax.inject.Inject
@@ -58,15 +60,9 @@ class HomeActivity : BaseActivity() {
         binding.btnGetUser.setOnClickListener {
             viewModel.getAllUser()
         }
-        binding.btnSetLogin.setOnClickListener {
-            viewModel.setLogin(login)
-        }
-        binding.btnGetLogin.setOnClickListener {
-            Log.d("xxx", "login: ${viewModel.getLogin()}")
-        }
         binding.btnPost.setOnClickListener { parsePost() }
+        firebaseFCM()
 
-        Log.d("xxx", "login: ${pref.isLoggedIn()}")
     }
 
     override fun observeViewModel() {
@@ -102,5 +98,15 @@ class HomeActivity : BaseActivity() {
     private fun parseSetting() = startActivity(SettingActivity.getStartIntent(this))
 
     private fun parsePost() = startActivity(QuoteActivity.getStartIntent(this))
+
+    private fun firebaseFCM() {
+        FirebaseMessaging.getInstance().token.addOnCompleteListener(OnCompleteListener { task ->
+            if (!task.isSuccessful) {
+                return@OnCompleteListener
+            }
+
+            task.result?.let { token -> pref.setDeviceFcm(token) }
+        })
+    }
 
 }

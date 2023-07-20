@@ -1,4 +1,4 @@
-package com.example.baseproject.ui.post.datasource
+package com.example.baseproject.ui.quote.datasource
 
 import dagger.Module
 import dagger.Provides

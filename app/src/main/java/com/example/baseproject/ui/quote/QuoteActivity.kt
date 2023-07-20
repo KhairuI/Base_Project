@@ -1,4 +1,4 @@
-package com.example.baseproject.ui.post
+package com.example.baseproject.ui.quote
 
 import android.content.Context
 import android.content.Intent
@@ -10,7 +10,7 @@ import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import com.example.baseproject.databinding.ActivityQuoteBinding
 import com.example.baseproject.ui.base.BaseActivity
-import com.example.baseproject.ui.post.adaoter.QuoteListAdapter
+import com.example.baseproject.ui.quote.adaoter.QuoteListAdapter
 import com.example.baseproject.utils.arch.Result
 import com.example.baseproject.utils.extension.loading
 import com.example.baseproject.utils.extension.with

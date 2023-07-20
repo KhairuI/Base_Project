@@ -1,4 +1,4 @@
-package com.example.baseproject.ui.post.datasource
+package com.example.baseproject.ui.quote.datasource
 
 import android.content.Context
 import com.example.baseproject.R

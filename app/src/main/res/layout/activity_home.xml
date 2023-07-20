@@ -76,26 +76,6 @@
                app:layout_constraintTop_toBottomOf="@id/btnSetUser"/>
 
            <Button
-               android:id="@+id/btnSetLogin"
-               android:layout_width="match_parent"
-               android:layout_height="wrap_content"
-               android:text="Set Login"
-               android:layout_margin="8dp"
-               app:layout_constraintStart_toStartOf="parent"
-               app:layout_constraintEnd_toEndOf="parent"
-               app:layout_constraintTop_toBottomOf="@id/btnGetUser"/>
-
-           <Button
-               android:id="@+id/btnGetLogin"
-               android:layout_width="match_parent"
-               android:layout_height="wrap_content"
-               android:text="Get Login"
-               android:layout_margin="8dp"
-               app:layout_constraintStart_toStartOf="parent"
-               app:layout_constraintEnd_toEndOf="parent"
-               app:layout_constraintTop_toBottomOf="@id/btnSetLogin"/>
-
-           <Button
                android:id="@+id/btnPost"
                android:layout_width="match_parent"
                android:layout_height="wrap_content"
@@ -103,7 +83,18 @@
                android:layout_margin="8dp"
                app:layout_constraintStart_toStartOf="parent"
                app:layout_constraintEnd_toEndOf="parent"
-               app:layout_constraintTop_toBottomOf="@id/btnGetLogin"/>
+               app:layout_constraintTop_toBottomOf="@id/btnGetUser"/>
+
+           <Button
+               android:id="@+id/btnNotification"
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               android:text="Send Notification"
+               android:layout_margin="8dp"
+               app:layout_constraintStart_toStartOf="parent"
+               app:layout_constraintEnd_toEndOf="parent"
+               app:layout_constraintTop_toBottomOf="@id/btnPost"/>
+
 
        </androidx.constraintlayout.widget.ConstraintLayout>
 

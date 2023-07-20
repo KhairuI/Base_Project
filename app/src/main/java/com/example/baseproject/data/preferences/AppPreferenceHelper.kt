@@ -13,17 +13,28 @@ class AppPreferenceHelper @Inject constructor(
 
     companion object {
         private const val PREF_KEY_LOGGED_IN = "pref_key_logged_in"
-        private const val PREF_KEY_USER_PHOTO = "pref_key_user_photo"
+        private const val PREF_KEY_FCM_TOKEN = "pref_key_fcm_token"
+        private const val PREF_KEY_ALLOW_NOTIFICATION = "pref_key_allow_notification"
     }
 
     private val ctx = context
 
     private val mPrefs: SharedPreferences =
-        context.getSharedPreferences(prefFileName, Context.MODE_PRIVATE)
+        ctx.getSharedPreferences(prefFileName, Context.MODE_PRIVATE)
 
     override fun isLoggedIn(): Boolean = mPrefs.getBoolean(PREF_KEY_LOGGED_IN, false)
 
     override fun setLoggedIn(isLoggedIn: Boolean) = mPrefs.edit()
         .putBoolean(PREF_KEY_LOGGED_IN, isLoggedIn).apply()
+
+    override fun getDeviceFcm(): String = mPrefs.getString(PREF_KEY_FCM_TOKEN, "") ?: ""
+
+    override fun setDeviceFcm(deviceFcm: String) = mPrefs.edit()
+        .putString(PREF_KEY_FCM_TOKEN, deviceFcm).apply()
+
+    override fun getNotificationPref(): Boolean = mPrefs.getBoolean(PREF_KEY_ALLOW_NOTIFICATION, true)
+
+    override fun setNotificationPref(isNotificationAllow: Boolean) = mPrefs.edit()
+        .putBoolean(PREF_KEY_ALLOW_NOTIFICATION, isNotificationAllow).apply()
 
 }

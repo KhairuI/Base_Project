@@ -1,8 +1,8 @@
-package com.example.baseproject.ui.post.delegate
+package com.example.baseproject.ui.quote.delegate
 
 import com.example.baseproject.data.network.response.Quote
 import com.example.baseproject.di.ext.ApplicationScope
-import com.example.baseproject.ui.post.datasource.QuoteDataSource
+import com.example.baseproject.ui.quote.datasource.QuoteDataSource
 import com.example.baseproject.utils.arch.Result
 import com.example.baseproject.utils.arch.tryOffer
 import kotlinx.coroutines.CoroutineScope

@@ -1,4 +1,4 @@
-package com.example.baseproject.ui.post.adaoter
+package com.example.baseproject.ui.quote.adaoter
 
 import android.annotation.SuppressLint
 import android.view.LayoutInflater
