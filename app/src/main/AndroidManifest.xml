@@ -35,6 +35,10 @@
             android:name=".ui.quote.QuoteActivity"
             android:exported="false" />
 
+        <activity
+            android:name=".ui.firebase.FirebaseActivity"
+            android:exported="false" />
+
         <service
             android:name="com.example.baseproject.service.firebase.FirebaseMessagingService"
             android:exported="false">

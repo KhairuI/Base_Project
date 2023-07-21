@@ -3,7 +3,10 @@
     <string name="build_time">v%1$s Build Time: %2$s</string>
     <string name="home">Home</string>
     <string name="setting">Setting</string>
+    <string name="firebase">Firebase</string>
     <string name="post">Posts</string>
+    <string name="list">Lists</string>
+    <string name="image">Images</string>
     <string name="choose_language">Choose your preferred language</string>
     <string name="english_bangla">English / বাংলা</string>
     <string name="english">English</string>

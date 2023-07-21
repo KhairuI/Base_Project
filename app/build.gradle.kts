@@ -11,6 +11,8 @@ plugins {
     id("dagger.hilt.android.plugin")
     id("com.google.firebase.crashlytics")
     id("com.google.android.libraries.mapsplatform.secrets-gradle-plugin")
+    id("androidx.navigation.safeargs.kotlin")
+
 }
 
 android {
@@ -198,6 +200,9 @@ dependencies {
     implementation("com.google.firebase:firebase-analytics:21.3.0")
     implementation("com.google.firebase:firebase-messaging:23.2.0")
     implementation("com.google.firebase:firebase-inappmessaging-display:20.3.2")
+    implementation("com.google.firebase:firebase-auth:22.1.0")
+    implementation("com.google.firebase:firebase-firestore:24.7.0")
+    implementation("com.google.firebase:firebase-storage:20.2.1")
 
     // ViewModel
     implementation("androidx.lifecycle:lifecycle-viewmodel:2.6.1")
@@ -212,6 +217,11 @@ dependencies {
 
     // Toasty
     implementation("com.github.GrenderG:Toasty:1.5.2")
+
+    //navigation
+    implementation("androidx.navigation:navigation-fragment-ktx:2.6.0")
+    implementation("androidx.navigation:navigation-ui-ktx:2.6.0")
+
 }
 kapt {
     correctErrorTypes = true

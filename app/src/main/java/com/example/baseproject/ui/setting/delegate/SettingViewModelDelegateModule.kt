@@ -12,6 +12,6 @@ object SettingViewModelDelegateModule {
 
     @Provides
     @Singleton
-    internal fun provideHomeViewModelDelegate(settingViewModelDelegateImpl: SettingViewModelDelegateImpl): SettingViewModelDelegate =
+    internal fun provideSettingViewModelDelegate(settingViewModelDelegateImpl: SettingViewModelDelegateImpl): SettingViewModelDelegate =
         settingViewModelDelegateImpl
 }

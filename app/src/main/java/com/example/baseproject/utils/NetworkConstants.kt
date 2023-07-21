@@ -6,7 +6,7 @@ object NetworkConstants {
     internal const val USER_AGENT = "User-Agent"
     internal const val ANDROID = "Android"
     internal const val AUTHORIZATION = "Authorization"
-    internal const val AUTHORIZATION_VALUE = "key=AAAAmtxjqCw:APA91bE_U49iRC8ob5hw-fWnXSKHZbdGlrauiM-yHyl_Jqp4HGRJIBhCFxagdt1_SwZRwTbXMU1-iDrYEoKDDsyUZvmKNagFxk2ipz5pU6qaAd0bRrK8R0yLbUkjl2WR2JrNMSHNWfKK"
+    internal const val AUTHORIZATION_VALUE = "key=AAAAlETGOrc:APA91bECI551JAi-ShVrk9XRidJN4IwBtQGAvG0P1QVm-c5vbk9ZTy_9Nc6OZrkuao2k9vkK6_BEo6pvrhqk8Mk6PIGiq3YCUnJw9XkVY5LQksOh0vscVun5k7Ac1Xr3z4IExYThGquk"
     internal const val ACCEPT = "Accept"
     internal const val CONTENT_TYPE = "Content-Type"
     internal const val APPLICATION_JSON = "application/json"
