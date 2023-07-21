@@ -12,6 +12,7 @@ import com.example.baseproject.data.database.repository.User
 import com.example.baseproject.data.preferences.PreferenceHelper
 import com.example.baseproject.databinding.ActivityHomeBinding
 import com.example.baseproject.ui.base.BaseActivity
+import com.example.baseproject.ui.firebase.FirebaseActivity
 import com.example.baseproject.ui.quote.QuoteActivity
 import com.example.baseproject.ui.setting.SettingActivity
 import com.example.baseproject.utils.AppConstants
@@ -65,6 +66,7 @@ class HomeActivity : BaseActivity() {
             viewModel.getAllUser()
         }
         binding.btnPost.setOnClickListener { parsePost() }
+        binding.btnFirebase.setOnClickListener { parseFirebase() }
         binding.btnNotification.setOnClickListener { viewModel.sendNotification() }
         firebaseFCM()
 
@@ -127,6 +129,8 @@ class HomeActivity : BaseActivity() {
     private fun parseSetting() = startActivity(SettingActivity.getStartIntent(this))
 
     private fun parsePost() = startActivity(QuoteActivity.getStartIntent(this))
+
+    private fun parseFirebase() = startActivity(FirebaseActivity.getStartIntent(this))
 
     private fun firebaseFCM() {
         FirebaseMessaging.getInstance().token.addOnCompleteListener(OnCompleteListener { task ->

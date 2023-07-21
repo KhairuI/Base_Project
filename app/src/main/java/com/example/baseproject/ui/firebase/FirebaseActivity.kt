@@ -4,6 +4,9 @@ import android.content.Context
 import android.content.Intent
 import android.view.View
 import androidx.activity.viewModels
+import androidx.navigation.fragment.NavHostFragment
+import androidx.navigation.ui.setupWithNavController
+import com.example.baseproject.R
 import com.example.baseproject.databinding.ActivityFirebaseBinding
 import com.example.baseproject.ui.base.BaseActivity
 import dagger.hilt.android.AndroidEntryPoint
@@ -26,6 +29,10 @@ class FirebaseActivity : BaseActivity() {
     }
 
     override fun initView() {
+
+        val navHostFragment = supportFragmentManager.findFragmentById(R.id.fragment_container) as NavHostFragment
+        val navController = navHostFragment.navController
+        binding.bottomNav.setupWithNavController(navController)
 
     }
 

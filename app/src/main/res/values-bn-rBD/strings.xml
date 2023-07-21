@@ -6,8 +6,10 @@
     <string name="setting">সেটিংস</string>
     <string name="firebase">ফায়ারবেজ</string>
     <string name="post">পোস্ট সমূহ</string>
-    <string name="list">তালিকা সমূহ</string>
-    <string name="image">ছবি সমূহ</string>
+    <string name="lists">তালিকা সমূহ</string>
+    <string name="list">তালিকা</string>
+    <string name="images">ছবি সমূহ</string>
+    <string name="image">ছবি</string>
     <string name="choose_language">আপনার পছন্দের ভাষা নির্বাচন করুন</string>
     <string name="english_bangla">English / বাংলা</string>
     <string name="english">ইংরেজি</string>

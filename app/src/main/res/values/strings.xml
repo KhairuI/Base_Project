@@ -5,7 +5,9 @@
     <string name="setting">Setting</string>
     <string name="firebase">Firebase</string>
     <string name="post">Posts</string>
-    <string name="list">Lists</string>
+    <string name="lists">Lists</string>
+    <string name="list">List</string>
+    <string name="images">Images</string>
     <string name="image">Images</string>
     <string name="choose_language">Choose your preferred language</string>
     <string name="english_bangla">English / বাংলা</string>
