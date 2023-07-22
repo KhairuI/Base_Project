@@ -11,6 +11,7 @@
     <string name="image">Images</string>
     <string name="choose_language">Choose your preferred language</string>
     <string name="english_bangla">English / বাংলা</string>
+    <string name="google_login">Login with Google</string>
     <string name="english">English</string>
     <string name="bangla">Bangla</string>
     <string name="choose_an_option">Choose an option</string>

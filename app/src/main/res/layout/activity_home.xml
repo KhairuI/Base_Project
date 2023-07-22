@@ -56,6 +56,21 @@
            android:layout_width="match_parent"
            android:layout_height="match_parent">
 
+           <com.google.android.material.textview.MaterialTextView
+               android:id="@+id/tv_email"
+               android:layout_width="0dp"
+               android:layout_height="wrap_content"
+               android:text="@string/home"
+               android:textColor="@color/black"
+               android:textSize="16sp"
+               android:gravity="center_horizontal"
+               android:layout_marginTop="4dp"
+               android:visibility="gone"
+               tools:visibility="visible"
+               app:layout_constraintStart_toStartOf="parent"
+               app:layout_constraintTop_toTopOf="parent"
+               app:layout_constraintEnd_toEndOf="parent"/>
+
            <Button
                android:id="@+id/btnSetUser"
                android:layout_width="match_parent"
@@ -64,7 +79,7 @@
                android:layout_margin="8dp"
                app:layout_constraintStart_toStartOf="parent"
                app:layout_constraintEnd_toEndOf="parent"
-               app:layout_constraintTop_toTopOf="parent"/>
+               app:layout_constraintTop_toBottomOf="@id/tv_email"/>
 
            <Button
                android:id="@+id/btnGetUser"

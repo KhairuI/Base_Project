@@ -12,6 +12,7 @@
     <string name="image">ছবি</string>
     <string name="choose_language">আপনার পছন্দের ভাষা নির্বাচন করুন</string>
     <string name="english_bangla">English / বাংলা</string>
+    <string name="google_login">Login with Google</string>
     <string name="english">ইংরেজি</string>
     <string name="bangla">বাংলা</string>
     <string name="choose_an_option">একটি নির্বাচন করুন</string>

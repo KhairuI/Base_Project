@@ -222,6 +222,9 @@ dependencies {
     implementation("androidx.navigation:navigation-fragment-ktx:2.6.0")
     implementation("androidx.navigation:navigation-ui-ktx:2.6.0")
 
+    // Spin Kit
+    implementation("com.github.ybq:Android-SpinKit:1.4.0")
+
 }
 kapt {
     correctErrorTypes = true

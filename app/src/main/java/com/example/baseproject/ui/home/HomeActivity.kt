@@ -18,12 +18,12 @@ import com.example.baseproject.ui.setting.SettingActivity
 import com.example.baseproject.utils.AppConstants
 import com.example.baseproject.utils.CommonUtil
 import com.example.baseproject.utils.arch.Result
-import com.example.baseproject.utils.extension.buildTime
 import com.example.baseproject.utils.extension.error
 import com.example.baseproject.utils.extension.getResString
 import com.example.baseproject.utils.extension.loading
 import com.example.baseproject.utils.extension.visible
 import com.google.android.gms.tasks.OnCompleteListener
+import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.messaging.FirebaseMessaging
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
@@ -38,6 +38,9 @@ class HomeActivity : BaseActivity() {
 
     @Inject
     lateinit var pref: PreferenceHelper
+
+    @Inject
+    lateinit var auth: FirebaseAuth
 
     companion object {
         fun getStartIntent(context: Context): Intent =
@@ -69,6 +72,16 @@ class HomeActivity : BaseActivity() {
         binding.btnFirebase.setOnClickListener { parseFirebase() }
         binding.btnNotification.setOnClickListener { viewModel.sendNotification() }
         firebaseFCM()
+        setEmail()
+
+    }
+
+    private fun setEmail() {
+        val user = auth.currentUser
+        user?.email?.let { email ->
+            binding.tvEmail.text = email
+            binding.tvEmail.visible()
+        }
 
     }
 
