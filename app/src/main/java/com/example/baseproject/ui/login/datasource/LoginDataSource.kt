@@ -11,13 +11,10 @@ import com.google.firebase.auth.AuthCredential
 import com.google.firebase.auth.FirebaseAuth
 import dagger.hilt.android.qualifiers.ApplicationContext
 import kotlinx.coroutines.CoroutineDispatcher
-import kotlinx.coroutines.DelicateCoroutinesApi
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.flowOn
-import kotlinx.coroutines.launch
+import kotlinx.coroutines.tasks.await
 import javax.inject.Inject
 
 interface LoginDataSource {
@@ -33,7 +30,6 @@ class LoginDataSourceImpl @Inject constructor(
 
     private fun hasInternetConnection(): Boolean = context.isNetworkConnected()
 
-    @OptIn(DelicateCoroutinesApi::class)
     override fun login(authCredential: AuthCredential): Flow<Result<Boolean>> = flow {
         try {
 
@@ -44,24 +40,12 @@ class LoginDataSourceImpl @Inject constructor(
                 return@flow
             }
 
-            auth.signInWithCredential(authCredential).addOnCompleteListener { task ->
-                if (task.isSuccessful) {
-                    GlobalScope.launch(Dispatchers.Default) {
-
-                    }
-                   // emit(Result.Success(true))
-
-
-                } else {
-                    GlobalScope.launch(Dispatchers.Default) {
-                        emit(Result.Error(UiText.DynamicString(task.exception.toString())))
-                    }
-                }
-
-            }.addOnFailureListener { e ->
-                GlobalScope.launch(Dispatchers.IO) {
-                    emit(Result.Error(UiText.DynamicString(e.toString())))
-                }
+            val result = auth.signInWithCredential(authCredential).await()
+            if (result.user != null) {
+                emit(Result.Success(true))
+            }
+            else{
+                emit(Result.Error(UiText.DynamicString("Not logged in")))
             }
 
         } catch (e: Exception) {

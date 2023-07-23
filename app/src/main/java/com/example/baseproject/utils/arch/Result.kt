@@ -22,7 +22,7 @@ val <T> Result<T>.data: T?
 
 inline fun <reified T> Result<T>.updateOnSuccess(liveData: MutableLiveData<T>) {
     if (this is Result.Success) {
-        liveData.value = data
+        liveData.value = data!!
     }
 }
 
