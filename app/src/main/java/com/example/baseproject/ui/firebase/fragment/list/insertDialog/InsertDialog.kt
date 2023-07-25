@@ -7,10 +7,19 @@ import android.view.View
 import android.view.ViewGroup
 import android.view.Window
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.lifecycleScope
+import androidx.lifecycle.repeatOnLifecycle
 import com.example.baseproject.R
 import com.example.baseproject.databinding.DialogInsertBinding
 import com.example.baseproject.ui.base.BaseDialogFragment
+import com.example.baseproject.utils.arch.Result
+import com.example.baseproject.utils.arch.UiText
+import com.example.baseproject.utils.extension.error
+import com.example.baseproject.utils.extension.loading
+import com.example.baseproject.utils.extension.success
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
 class InsertDialog : BaseDialogFragment() {
@@ -44,19 +53,42 @@ class InsertDialog : BaseDialogFragment() {
 
         binding.tvCancel.setOnClickListener { dismiss() }
         binding.tvSave.setOnClickListener {
-            if(isValidate()){
-
+            if (isValidate()) {
+                viewModel.insert(getInputText())
             }
         }
     }
 
-    override fun observeViewModel() {}
+    override fun observeViewModel() {
+        lifecycleScope.launch {
+            lifecycle.repeatOnLifecycle(Lifecycle.State.STARTED) {
+                launch {
+                    viewModel.insertResponse.collect { result ->
+                        when (result) {
+                            is Result.Error -> {
+                                error(result.uiText)
+                            }
+
+                            is Result.Loading -> {
+                                loading(result.isLoading)
+                            }
+
+                            is Result.Success -> {
+                                success(UiText.DynamicString(result.data))
+                                success?.invoke().also { dismiss() }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
 
     fun success(success: () -> Unit) {
         this.success = success
     }
 
-    fun isValidate(): Boolean {
+    private fun isValidate(): Boolean {
         if (getInputText().isEmpty()) {
             binding.layoutText.error = getString(R.string.text_missing)
             return false

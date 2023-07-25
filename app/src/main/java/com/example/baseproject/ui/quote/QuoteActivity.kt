@@ -12,6 +12,7 @@ import com.example.baseproject.databinding.ActivityQuoteBinding
 import com.example.baseproject.ui.base.BaseActivity
 import com.example.baseproject.ui.quote.adaoter.QuoteListAdapter
 import com.example.baseproject.utils.arch.Result
+import com.example.baseproject.utils.extension.error
 import com.example.baseproject.utils.extension.loading
 import com.example.baseproject.utils.extension.with
 import dagger.hilt.android.AndroidEntryPoint
@@ -53,7 +54,7 @@ class QuoteActivity : BaseActivity() {
                         when (result) {
                             is Result.Error -> {
                                 Log.d("xxx", "Error: ${result.uiText.asString(this@QuoteActivity)}")
-                                //error(result.uiText)
+                                error(result.uiText)
                             }
 
                             is Result.Loading -> {

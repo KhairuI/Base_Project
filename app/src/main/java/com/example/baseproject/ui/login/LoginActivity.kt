@@ -28,7 +28,6 @@ import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
-@SuppressLint("CustomSplashScreen")
 class LoginActivity : BaseActivity() {
 
     private val viewModel by viewModels<LoginViewModel>()
