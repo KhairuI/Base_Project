@@ -20,4 +20,26 @@
         <item name="android:textSize">14sp</item>
         <item name="android:insetBottom">0dp</item>
     </style>
+
+    <style name="TextInputLayout" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+        <item name="boxStrokeWidth">0.5dp</item>
+        <item name="fontFamily">@font/mulish_700</item>
+        <item name="boxStrokeColor">@color/p1</item>
+        <item name="android:textColorHint">@color/p1</item>
+        <item name="boxCornerRadiusBottomStart">1dp</item>
+        <item name="boxCornerRadiusBottomEnd">1dp</item>
+        <item name="boxCornerRadiusTopStart">1dp</item>
+        <item name="boxCornerRadiusTopEnd">1dp</item>
+        <item name="endIconMode">clear_text</item>
+        <item name="endIconTint">@color/p1</item>
+        <item name="hintEnabled">true</item>
+        <item name="errorEnabled">true</item>
+        <item name="helperTextTextAppearance">@style/HelperTextTextAppearance</item>
+        <item name="helperTextTextColor">@color/p1</item>
+    </style>
+
+    <style name="HelperTextTextAppearance" parent="android:TextAppearance">
+        <item name="android:textSize">14sp</item>
+        <item name="fontFamily">@font/mulish_600</item>
+    </style>
 </resources>

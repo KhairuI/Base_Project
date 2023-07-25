@@ -14,4 +14,8 @@ interface PreferenceHelper {
 
     fun setNotificationPref(isNotificationAllow: Boolean)
 
+    fun getFirebaseUid(): String
+
+    fun setFirebaseUid(uid: String)
+
 }

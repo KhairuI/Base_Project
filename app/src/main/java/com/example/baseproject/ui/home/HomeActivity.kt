@@ -78,6 +78,9 @@ class HomeActivity : BaseActivity() {
 
     private fun setEmail() {
         val user = auth.currentUser
+        user?.uid?.let { uid ->
+            pref.setFirebaseUid(uid)
+        }
         user?.email?.let { email ->
             binding.tvEmail.text = email
             binding.tvEmail.visible()

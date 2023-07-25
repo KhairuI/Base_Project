@@ -15,6 +15,7 @@ class AppPreferenceHelper @Inject constructor(
         private const val PREF_KEY_LOGGED_IN = "pref_key_logged_in"
         private const val PREF_KEY_FCM_TOKEN = "pref_key_fcm_token"
         private const val PREF_KEY_ALLOW_NOTIFICATION = "pref_key_allow_notification"
+        private const val PREF_KEY_FIREBASE_UID = "pref_key_firebase_uid"
     }
 
     private val ctx = context
@@ -36,5 +37,10 @@ class AppPreferenceHelper @Inject constructor(
 
     override fun setNotificationPref(isNotificationAllow: Boolean) = mPrefs.edit()
         .putBoolean(PREF_KEY_ALLOW_NOTIFICATION, isNotificationAllow).apply()
+
+    override fun getFirebaseUid(): String = mPrefs.getString(PREF_KEY_FIREBASE_UID, "") ?: ""
+
+    override fun setFirebaseUid(uid: String) = mPrefs.edit()
+        .putString(PREF_KEY_FIREBASE_UID, uid).apply()
 
 }

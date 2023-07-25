@@ -17,6 +17,8 @@
     <string name="choose_an_option">Choose an option</string>
     <string name="cancel">Cancel</string>
     <string name="save">Save</string>
+    <string name="enter_text">Enter Text</string>
+    <string name="text_missing">Text is missing</string>
     <string name="api_default_error">Something went wrong!</string>
     <string name="http_unauthorized">Unauthorised User</string>
     <string name="http_forbidden">Forbidden</string>

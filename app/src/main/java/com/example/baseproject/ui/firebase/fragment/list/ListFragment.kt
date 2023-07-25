@@ -6,7 +6,10 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import com.example.baseproject.databinding.FragmentListBinding
+import com.example.baseproject.service.BaseProjectApp
 import com.example.baseproject.ui.base.BaseFragment
+import com.example.baseproject.ui.firebase.fragment.list.insertDialog.InsertDialog
+import com.example.baseproject.ui.setting.select_language.SelectLanguageDialog
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -31,6 +34,18 @@ class ListFragment : BaseFragment() {
 
     override fun setup(view: View) {
 
+        binding.btnInsert.setOnClickListener {
+            insertDialog()
+        }
+
+    }
+
+    private fun insertDialog() {
+        val dialog = InsertDialog.newInstance()
+        dialog.isCancelable = false
+        dialog.success {
+        }
+        dialog.show(childFragmentManager, InsertDialog.TAG)
     }
 
     override fun observeViewModel() {
