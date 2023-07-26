@@ -21,7 +21,7 @@ import kotlinx.coroutines.tasks.await
 import javax.inject.Inject
 
 interface InsertDialogDataSource {
-    fun insert(text: String): MutableLiveData<String>
+    fun insert(text: String): MutableLiveData<Boolean>
     fun insert2(text: String): Flow<Result<String>>
 }
 
@@ -35,16 +35,16 @@ class InsertDialogDataSourceImpl @Inject constructor(
 
     private fun hasInternetConnection(): Boolean = context.isNetworkConnected()
 
-    override fun insert(text: String): MutableLiveData<String> {
-        val result = MutableLiveData<String>()
+    override fun insert(text: String): MutableLiveData<Boolean> {
+        val result = MutableLiveData<Boolean>()
 
         //  result.value = Result.Loading()
         Log.d("xxx", "insert: enter try")
 
-        if (!hasInternetConnection()) {
+        /*if (!hasInternetConnection()) {
             result.value = context.getString(R.string.text_missing)
             return result
-        }
+        }*/
 
         val map: MutableMap<String, String> = HashMap()
         map["name"] = text
@@ -54,10 +54,10 @@ class InsertDialogDataSourceImpl @Inject constructor(
             .add(map).addOnCompleteListener { task ->
                 if (task.isSuccessful) {
                     Log.d("xxx", "insert: task success")
-                    result.value = "Insert Successfully"
+                    result.value = true
                 } else {
                     Log.d("xxx", "insert: task fail")
-                    result.value = "Insert Failed"
+                    result.value = false
                 }
             }
         return result

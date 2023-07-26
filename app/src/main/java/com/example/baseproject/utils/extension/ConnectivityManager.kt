@@ -19,9 +19,6 @@ fun Context.online(block: () -> Unit) {
 }
 
 fun Context.isNetworkConnected(): Boolean {
-    if (BuildConfig.IS_DEVELOPMENT) {
-        return true
-    } else {
         var result = false
         val connectivityManager =
             applicationContext.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
@@ -49,5 +46,4 @@ fun Context.isNetworkConnected(): Boolean {
         }
 
         return result
-    }
 }

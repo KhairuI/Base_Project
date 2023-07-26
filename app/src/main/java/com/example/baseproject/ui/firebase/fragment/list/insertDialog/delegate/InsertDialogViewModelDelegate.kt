@@ -15,7 +15,7 @@ import javax.inject.Inject
 
 interface InsertDialogViewModelDelegate {
     fun insert(text: String)
-    val insertResponse: Flow<Result<String>>
+    val insertResponse: LiveData<Boolean>
 }
 
 internal class InsertDialogViewModelDelegateImpl @Inject constructor(
@@ -23,19 +23,20 @@ internal class InsertDialogViewModelDelegateImpl @Inject constructor(
     private val insertDialogDataSource: InsertDialogDataSource,
 ) : InsertDialogViewModelDelegate {
 
-    /*private val _insertResponse = MutableLiveData<Result<Boolean>>()
-    override val insertResponse: LiveData<Result<Boolean>> get() = _insertResponse*/
+    private val _insertResponse = MutableLiveData<Boolean>()
+    override val insertResponse: LiveData<Boolean> get() = _insertResponse
 
-    private val _insertResponse = Channel<Result<String>>(Channel.CONFLATED)
-    override val insertResponse = _insertResponse.receiveAsFlow()
+    /*private val _insertResponse = Channel<Result<String>>(Channel.CONFLATED)
+    override val insertResponse = _insertResponse.receiveAsFlow()*/
 
     override fun insert(text: String) {
+        _insertResponse.value = insertDialogDataSource.insert(text).value
        /*// _insertResponse.value = Result.Loading()
         _insertResponse.value = insertDialogDataSource.insert(text).value*/
-          applicationScope.launch {
+         /* applicationScope.launch {
               insertDialogDataSource.insert2(text).collect { result ->
                   _insertResponse.tryOffer(result)
               }
-          }
+          }*/
     }
 }

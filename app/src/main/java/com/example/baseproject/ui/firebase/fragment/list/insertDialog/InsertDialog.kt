@@ -13,10 +13,14 @@ import androidx.lifecycle.repeatOnLifecycle
 import com.example.baseproject.R
 import com.example.baseproject.databinding.DialogInsertBinding
 import com.example.baseproject.ui.base.BaseDialogFragment
+import com.example.baseproject.ui.base.finish
 import com.example.baseproject.utils.arch.Result
 import com.example.baseproject.utils.arch.UiText
+import com.example.baseproject.utils.arch.observe
 import com.example.baseproject.utils.extension.error
+import com.example.baseproject.utils.extension.isNetworkConnected
 import com.example.baseproject.utils.extension.loading
+import com.example.baseproject.utils.extension.online
 import com.example.baseproject.utils.extension.success
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
@@ -53,14 +57,19 @@ class InsertDialog : BaseDialogFragment() {
 
         binding.tvCancel.setOnClickListener { dismiss() }
         binding.tvSave.setOnClickListener {
-            if (isValidate()) {
-                viewModel.insert(getInputText())
-            }
+           requireContext().online {
+               if (isValidate()) {
+                   loading(true)
+                   viewModel.insert(getInputText())
+               }
+           }
         }
     }
 
     override fun observeViewModel() {
-        lifecycleScope.launch {
+
+        observe(viewModel.insertResponse, ::loadTeamItems)
+      /*  lifecycleScope.launch {
             lifecycle.repeatOnLifecycle(Lifecycle.State.STARTED) {
                 launch {
                     viewModel.insertResponse.collect { result ->
@@ -81,7 +90,20 @@ class InsertDialog : BaseDialogFragment() {
                     }
                 }
             }
+        }*/
+    }
+
+    private fun loadTeamItems(isSuccess:Boolean) {
+        if(isSuccess){
+            loading(false)
+            success(UiText.DynamicString("Insert Successfully"))
+            success?.invoke().also { finish() }
         }
+        else{
+            loading(false)
+            error(UiText.DynamicString("Insert Failed"))
+        }
+
     }
 
     fun success(success: () -> Unit) {
