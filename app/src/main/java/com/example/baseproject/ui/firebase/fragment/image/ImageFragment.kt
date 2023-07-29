@@ -9,6 +9,7 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
+import androidx.navigation.fragment.findNavController
 import com.example.baseproject.databinding.FragmentImageBinding
 import com.example.baseproject.ui.base.BaseFragment
 import com.example.baseproject.ui.firebase.fragment.image.adapter.ImageListAdapter
@@ -89,7 +90,14 @@ class ImageFragment : BaseFragment() {
         imageAdapter.getContext(requireContext())
         imageAdapter.submitList(data)
         binding.listText.with(imageAdapter.apply {
-            click { item -> Log.d("xxx", "item: $item") }
+            click { item ->
+                findNavController().navigate(
+                    ImageFragmentDirections.actionImageFragmentToPreviewFragment(
+                        item.url
+                    )
+                )
+            }
+
         })
 
     }

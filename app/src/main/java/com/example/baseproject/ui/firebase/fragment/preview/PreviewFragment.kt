@@ -4,7 +4,9 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.net.toUri
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.navArgs
 import com.example.baseproject.databinding.FragmentPreviewBinding
 import com.example.baseproject.ui.base.BaseFragment
 import dagger.hilt.android.AndroidEntryPoint
@@ -16,6 +18,7 @@ class PreviewFragment : BaseFragment() {
 
     private var _binding: FragmentPreviewBinding? = null
     private val binding get() = _binding!!
+    private val args: PreviewFragmentArgs by navArgs()
 
     companion object {
         const val TAG: String = "PreviewFragment"
@@ -30,7 +33,14 @@ class PreviewFragment : BaseFragment() {
     }
 
     override fun setup(view: View) {
+        setArgs()
 
+    }
+
+    private fun setArgs() {
+        args.url?.let { url ->
+
+        }
     }
 
     override fun observeViewModel() {}

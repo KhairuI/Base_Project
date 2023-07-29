@@ -238,6 +238,8 @@ dependencies {
         version { strictly("2.6.0") }
     }
 
+    implementation("com.github.chrisbanes:PhotoView:2.3.0")
+
 }
 kapt {
     correctErrorTypes = true
