@@ -1,5 +1,6 @@
 package com.example.baseproject.ui.firebase.fragment.list
 
+import android.util.Log
 import com.example.baseproject.ui.base.BaseViewModel
 import com.example.baseproject.ui.firebase.fragment.list.delegate.ListViewModelDelegate
 import dagger.hilt.android.lifecycle.HiltViewModel

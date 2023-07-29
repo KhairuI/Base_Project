@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
     app:startDestination="@id/listFragment">
 
@@ -12,5 +11,20 @@
     <fragment
         android:id="@+id/imageFragment"
         android:name="com.example.baseproject.ui.firebase.fragment.image.ImageFragment"
-        android:label="ImageFragment" />
+        android:label="ImageFragment" >
+        <action
+            android:id="@+id/action_imageFragment_to_previewFragment"
+            app:destination="@id/previewFragment"
+            app:popUpToInclusive="true"
+            app:popUpTo="@id/nav_graph"/>
+    </fragment>
+    <fragment
+        android:id="@+id/previewFragment"
+        android:name="com.example.baseproject.ui.firebase.fragment.preview.PreviewFragment"
+        android:label="PreviewFragment" >
+        <argument
+            android:name="url"
+            app:argType="string"
+            app:nullable="true" />
+    </fragment>
 </navigation>

@@ -155,6 +155,7 @@ dependencies {
     // Coroutines
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.4")
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.6.4")
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-play-services:1.6.4")
 
     // Chuck-er
     debugImplementation("com.github.chuckerteam.chucker:library:3.5.2")
@@ -224,6 +225,18 @@ dependencies {
 
     // Spin Kit
     implementation("com.github.ybq:Android-SpinKit:1.4.0")
+
+    // Image Picker
+    implementation("com.github.Drjacky:ImagePicker:2.3.22")
+
+    // Glide
+    implementation("com.github.bumptech.glide:glide:4.15.1")
+    kapt("com.github.bumptech.glide:compiler:4.15.1")
+
+    // Fresco
+    implementation("com.facebook.fresco:fresco") {
+        version { strictly("2.6.0") }
+    }
 
 }
 kapt {

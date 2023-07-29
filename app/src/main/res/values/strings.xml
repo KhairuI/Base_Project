@@ -3,6 +3,7 @@
     <string name="build_time">v%1$s Build Time: %2$s</string>
     <string name="home">Home</string>
     <string name="setting">Setting</string>
+    <string name="preview">Preview</string>
     <string name="firebase">Firebase</string>
     <string name="post">Posts</string>
     <string name="lists">Lists</string>
@@ -18,7 +19,12 @@
     <string name="cancel">Cancel</string>
     <string name="save">Save</string>
     <string name="enter_text">Enter Text</string>
+    <string name="add_image">Add Image</string>
+    <string name="task_canceled">Task Cancelled</string>
+    <string name="take_photo">Take Photo</string>
+    <string name="browse_gallery">Browse Gallery</string>
     <string name="text_missing">Text is missing</string>
+    <string name="image_missing">Image is missing</string>
     <string name="api_default_error">Something went wrong!</string>
     <string name="http_unauthorized">Unauthorised User</string>
     <string name="http_forbidden">Forbidden</string>

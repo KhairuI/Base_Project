@@ -1,8 +1,6 @@
 package com.example.baseproject.ui.firebase.fragment.list.insertDialog.datasource
 
 import android.content.Context
-import android.util.Log
-import androidx.lifecycle.MutableLiveData
 import com.example.baseproject.R
 import com.example.baseproject.data.preferences.PreferenceHelper
 import com.example.baseproject.di.ext.IoDispatcher
@@ -21,8 +19,7 @@ import kotlinx.coroutines.tasks.await
 import javax.inject.Inject
 
 interface InsertDialogDataSource {
-    fun insert(text: String): MutableLiveData<Boolean>
-    fun insert2(text: String): Flow<Result<String>>
+    suspend fun insert(text: String): Flow<Result<String>>
 }
 
 class InsertDialogDataSourceImpl @Inject constructor(
@@ -35,42 +32,15 @@ class InsertDialogDataSourceImpl @Inject constructor(
 
     private fun hasInternetConnection(): Boolean = context.isNetworkConnected()
 
-    override fun insert(text: String): MutableLiveData<Boolean> {
-        val result = MutableLiveData<Boolean>()
-
-        //  result.value = Result.Loading()
-        Log.d("xxx", "insert: enter try")
-
-        /*if (!hasInternetConnection()) {
-            result.value = context.getString(R.string.text_missing)
-            return result
-        }*/
-
-        val map: MutableMap<String, String> = HashMap()
-        map["name"] = text
-
-        fireStore.collection(FirebaseConstants.TEXT_LIST)
-            .document(preferenceHelper.getFirebaseUid()).collection(FirebaseConstants.LIST)
-            .add(map).addOnCompleteListener { task ->
-                if (task.isSuccessful) {
-                    Log.d("xxx", "insert: task success")
-                    result.value = true
-                } else {
-                    Log.d("xxx", "insert: task fail")
-                    result.value = false
-                }
-            }
-        return result
-    }
-
-    override fun insert2(text: String): Flow<Result<String>> = flow {
+    override suspend fun insert(text: String): Flow<Result<String>> = flow {
         try {
 
-            emit(Result.Loading())
             if (!hasInternetConnection()) {
                 emit(Result.Error(UiText.StringResource(R.string.http_no_internet)))
                 return@flow
             }
+
+            emit(Result.Loading())
 
             val map: MutableMap<String, String> = HashMap()
             map["name"] = text
@@ -78,11 +48,12 @@ class InsertDialogDataSourceImpl @Inject constructor(
             val task = fireStore.collection(FirebaseConstants.TEXT_LIST)
                 .document(preferenceHelper.getFirebaseUid()).collection(FirebaseConstants.LIST)
                 .add(map).await()
-            if (task.get().isSuccessful) {
-                emit(Result.Success("Insert Successfully"))
-            } else {
-                emit(Result.Error(UiText.DynamicString(task.get().exception.toString())))
-            }
+
+            emit(
+                task.get().isSuccessful.let {
+                    Result.Success("Insert Successfully")
+                }
+            )
 
         } catch (e: Exception) {
             e.printStackTrace()

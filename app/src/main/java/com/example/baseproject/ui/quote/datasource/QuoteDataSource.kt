@@ -31,12 +31,12 @@ class QuoteDataSourceImpl @Inject constructor(
 
     override suspend fun getQuote(): Flow<Result<Quote>> = flow {
         try {
-            emit(Result.Loading())
 
             if (!hasInternetConnection()) {
                 emit(Result.Error(UiText.StringResource(R.string.http_no_internet)))
                 return@flow
             }
+            emit(Result.Loading())
 
             val response = apiServiceQuote.quoteApiCall()
             if (!response.isSuccessful) {

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="in.rocareindia.com.rocareindiaems.MainActivity">
+
+    <item
+        android:id="@+id/action_take_photo"
+        android:title="@string/take_photo" />
+
+    <item
+        android:id="@+id/action_browse_gallery"
+        android:title="@string/browse_gallery" />
+
+</menu>

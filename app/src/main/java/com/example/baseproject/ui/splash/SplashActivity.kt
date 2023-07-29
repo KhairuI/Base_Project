@@ -16,6 +16,7 @@ import com.example.baseproject.ui.base.BaseActivity
 import com.example.baseproject.ui.home.HomeActivity
 import com.example.baseproject.ui.login.LoginActivity
 import com.example.baseproject.utils.arch.Result
+import com.example.baseproject.utils.extension.error
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 
@@ -62,9 +63,12 @@ class SplashActivity : BaseActivity() {
                         when (result) {
                             is Result.Error -> {
                                 Log.d("xxx", "Error: ${result.uiText.asString(this@SplashActivity)}")
+                                error(result.uiText)
                             }
 
-                            is Result.Loading -> {}
+                            is Result.Loading -> {
+
+                            }
 
                             is Result.Success -> {
                                 if (result.data) {

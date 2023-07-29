@@ -42,4 +42,9 @@
         <item name="android:textSize">14sp</item>
         <item name="fontFamily">@font/mulish_600</item>
     </style>
+
+    <style name="TextButtonStyle" parent="@style/Widget.MaterialComponents.Button.TextButton">
+        <item name="fontFamily">@font/mulish_700</item>
+        <item name="android:textColor">@color/p2</item>
+    </style>
 </resources>

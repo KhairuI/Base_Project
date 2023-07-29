@@ -15,4 +15,12 @@ object AppConstants {
     internal const val PREF_STORAGE_NAME = "pref_storage_client"
     internal const val PREF_SHARED_NAME = "pref_shared_client"
     internal const val PREF_NAME = "pref_base_project"
+
+    internal const val MIN_AGE_FOR_APPLY = -18 // it's minus. it's minus from current date
+    internal const val MAX_IMAGE_SIZE = 1080
+    internal const val QUESTION_DELAY: Long = 3000L // 3 sec
+    internal const val TIMESTAMP_FORMAT = "dd-MMM-yyyy"
+    internal const val COUNTDOWN_INTERVAL = 1000L
+    internal const val IMAGE_QUALITY = 80
+    internal val MIME_TYPE = arrayOf("image/png", "image/jpg", "image/jpeg")
 }

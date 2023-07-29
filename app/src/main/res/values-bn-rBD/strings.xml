@@ -4,6 +4,7 @@
     <string name="build_time">v%1$s বিল্ড টাইম: %2$s</string>
     <string name="home">হোম</string>
     <string name="setting">সেটিংস</string>
+    <string name="preview">পূর্বরূপ</string>
     <string name="firebase">ফায়ারবেজ</string>
     <string name="post">পোস্ট সমূহ</string>
     <string name="lists">তালিকা সমূহ</string>
@@ -19,7 +20,12 @@
     <string name="cancel">বাতিল করুন</string>
     <string name="save">সংরক্ষণ করুন</string>
     <string name="enter_text">লেখা অন্তর্ভুক্ত করুন</string>
+    <string name="add_image">ছবি যোগ কর</string>
+    <string name="task_canceled">টাস্ক বাতিল করা হয়েছে</string>
+    <string name="take_photo">"ছবি তুলুন "</string>
+    <string name="browse_gallery">গ্যালারি ব্রাউজ করুন</string>
     <string name="text_missing">টেক্সট অনুপস্থিত</string>
+    <string name="image_missing">ছবি অনুপস্থিত</string>
     <string name="api_default_error">কিছু ভুল হয়েছে!</string>
     <string name="http_unauthorized">Unauthorised User</string>
     <string name="http_forbidden">Forbidden</string>
